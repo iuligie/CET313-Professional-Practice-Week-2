@@ -53,8 +53,8 @@ def create_triangle(i, j, action):
 
 def render_grid():
     global specials, walls, Width, x, y, player
-    for i in range(y):
-        for j in range(x):
+    for i in range(x):
+        for j in range(y):
             board.create_rectangle(i*Width, j*Width, (i+1)*Width, (j+1)*Width, fill="white", width=1)
             temp = {}
             for action in actions:
