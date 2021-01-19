@@ -7,7 +7,7 @@ master.title("Maze Assistant")
 Width =30
 triangle_size = 0.1
 (x,y)=(20,16)
-player = (0, 5)
+player = (0, 7)
 actions = ["up", "down", "left", "right"]
 board=tk.Canvas(master, width=x*Width, height=y*Width)
 border=[]
@@ -28,31 +28,32 @@ walls = [
 (14,17),
 (15,1),(15,2),(15,3),(15,4),(15,5),(15,6),(15,7),(15,8),(15,9),(15,10),(15,11),(15,12),(15,13),(15,14),(15,15),(15,16),(15,17),(15,18)
 ]
-specials = [(16, 3, "red", -1), (0, 7, "yellow", 1),(13, 19, "yellow", 1),(19, 13, "yellow", 1)]
+specials = [(16, 3, "red", -1), (0, 7, "yellow", 1),(13, 19, "yellow", 1),(19, 13, "green", 1)]
 cell_scores = {}
 start=[]
-def create_triangle(i, j, action):
-    if action == actions[0]:
-        return board.create_polygon((i+0.5-triangle_size)*Width, (j+triangle_size)*Width,
-                                    (i+0.5+triangle_size)*Width, (j+triangle_size)*Width,
-                                    (i+0.5)*Width, j*Width,
-                                    fill="white", width=1)
-    elif action == actions[1]:
-        return board.create_polygon((i+0.5-triangle_size)*Width, (j+1-triangle_size)*Width,
-                                    (i+0.5+triangle_size)*Width, (j+1-triangle_size)*Width,
-                                    (i+0.5)*Width, (j+1)*Width,
-                                    fill="white", width=1)
-    elif action == actions[2]:
-        return board.create_polygon((i+triangle_size)*Width, (j+0.5-triangle_size)*Width,
-                                    (i+triangle_size)*Width, (j+0.5+triangle_size)*Width,
-                                    i*Width, (j+0.5)*Width,
-                                    fill="white", width=1)
-    elif action == actions[3]:
-        return board.create_polygon((i+1-triangle_size)*Width, (j+0.5-triangle_size)*Width,
-                                    (i+1-triangle_size)*Width, (j+0.5+triangle_size)*Width,
-                                    (i+1)*Width, (j+0.5)*Width,
-                                    fill="white", width=1)
 
+#def create_triangle(i, j, action):
+#    if action == actions[0]:
+#        return board.create_polygon((i+0.5-triangle_size)*Width, (j+triangle_size)*Width,
+#                                    (i+0.5+triangle_size)*Width, (j+triangle_size)*Width,
+#                                    (i+0.5)*Width, j*Width,
+#                                    fill="white", width=1)
+#    elif action == actions[1]:
+#        return board.create_polygon((i+0.5-triangle_size)*Width, (j+1-triangle_size)*Width,
+#                                    (i+0.5+triangle_size)*Width, (j+1-triangle_size)*Width,
+#                                    (i+0.5)*Width, (j+1)*Width,
+#                                    fill="white", width=1)
+#    elif action == actions[2]:
+#        return board.create_polygon((i+triangle_size)*Width, (j+0.5-triangle_size)*Width,
+#                                    (i+triangle_size)*Width, (j+0.5+triangle_size)*Width,
+#                                    i*Width, (j+0.5)*Width,
+#                                    fill="white", width=1)
+#    elif action == actions[3]:
+#        return board.create_polygon((i+1-triangle_size)*Width, (j+0.5-triangle_size)*Width,
+#                                    (i+1-triangle_size)*Width, (j+0.5+triangle_size)*Width,
+#                                    (i+1)*Width, (j+0.5)*Width,
+#                                    fill="white", width=1)
+###
 def render_grid():
     global specials, walls, Width, x, y, player
     for i in range(x):
@@ -72,6 +73,8 @@ def render_grid():
 render_grid()
 me = board.create_rectangle(player[0]*Width+Width*2/10, player[1]*Width+Width*2/10,
                             player[0]*Width+Width*8/10, player[1]*Width+Width*8/10, fill="orange", width=1, tag="me")
+
+
 board.grid(row=0, column=0)
 master.mainloop()
 
